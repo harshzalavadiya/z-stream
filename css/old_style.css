@@ -1,0 +1,265 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline; }
+
+html {
+	line-height: 1; }
+
+* {
+	font-family:"Open Sans", sans-serif; }
+
+ol, ul {
+	list-style: none; }
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0; }
+
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+	vertical-align: middle; }
+
+q, blockquote {
+	quotes: none; }
+	q:before, q:after, blockquote:before, blockquote:after {
+		content: "";
+		content: none; }
+
+a img {
+	border: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+	display: block; }
+
+body {
+	background-color: #fdfdfd; }
+
+.back-to-article {
+	text-align: center;
+	margin: 25px 0 100px 0;
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px; }
+	.back-to-article > a {
+		text-decoration: none;
+		color: #d41f2c; }
+		.back-to-article > a:hover {
+			border-bottom: 1px solid #d41f2c; }
+
+.audio-player-wrapper {
+	position:absolute;
+	bottom:0;
+	left:0;
+	display:inline-block;
+	width:100%;
+	background-color: #ddddda;
+	border-top:3px solid #808e97;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px; }
+	.audio-player-wrapper.error .audio-player-image {;
+		background: #f78471; }
+		.audio-player-wrapper.error .audio-player-image:before {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			height: 10px;
+			width: 100%;
+			text-align: center;
+			margin: auto;
+			color: white;
+			content: "Error loading";
+			font-family: "Open Sans", sans-serif;
+			font-weight: 600;
+			font-size: 13px; }
+		.audio-player-wrapper.error .audio-player-image > * {
+			display: none; }
+
+.audio-player-wrapper > div {
+	padding:15px;
+}
+
+.audio-player-image {
+	vertical-align: top;
+	position: relative;
+	height:90px;
+	width:90px;
+	border:1px solid rgba(0,0,0,0.1);
+	display:inline-block;
+	border-radius:3px;
+	-webkit-backface-visibility: hidden; }
+	.audio-player-image > img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		max-width: 100%;
+		height: auto; }
+		.audio-player-image > img.fading {
+			-webkit-transition: opacity 200ms linear;
+			-moz-transition: opacity 200ms linear;
+			-o-transition: opacity 200ms linear;
+			transition: opacity 200ms linear;
+			z-index: 1;
+			opacity: 0; }
+
+.audio-player-song-name {
+	display:block;
+	margin-bottom:1em;
+	z-index: 2;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 600;
+	font-size: 11px;
+	color: #808e97;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	text-transform: uppercase; }
+
+.audio-player-controls {
+	display:inline-block;
+	width:300px;
+	margin-left:15px;
+}
+
+@-moz-keyframes loadingStripes {
+	0% {
+		background-position: -20px; }
+
+	100% {
+		background-position: 0px; } }
+
+@-webkit-keyframes loadingStripes {
+	0% {
+		background-position: -20px; }
+
+	100% {
+		background-position: 0px; } }
+
+@-o-keyframes loadingStripes {
+	0% {
+		background-position: -20px; }
+
+	100% {
+		background-position: 0px; } }
+
+@-ms-keyframes loadingStripes {
+	0% {
+		background-position: -20px; }
+
+	100% {
+		background-position: 0px; } }
+
+@keyframes loadingStripes {
+	0% {
+		background-position: -20px; }
+
+	100% {
+		background-position: 0px; } }
+
+.audio-player-progress {
+	display: block;
+	width: 100%;
+	height: 5px;
+	border-radius: 25px;
+	background-color: #a0a7af;
+	overflow: hidden; }
+	.audio-player-progress.loading {
+		background-image: -webkit-linear-gradient(-45deg, #808e97 25%, transparent 25%, transparent 50%, #808e97 50%, #808e97 75%, transparent 75%, transparent);
+		background-image: -moz-linear-gradient(-45deg, #808e97 25%, transparent 25%, transparent 50%, #808e97 50%, #808e97 75%, transparent 75%, transparent);
+		background-image: -o-linear-gradient(-45deg, #808e97 25%, transparent 25%, transparent 50%, #808e97 50%, #808e97 75%, transparent 75%, transparent);
+		background-image: linear-gradient(-45deg, #808e97 25%, transparent 25%, transparent 50%, #808e97 50%, #808e97 75%, transparent 75%, transparent);
+		background-size: 20px 20px;
+		-webkit-animation: loadingStripes 700ms linear infinite;
+		-moz-animation: loadingStripes 700ms linear infinite;
+		-ms-animation: loadingStripes 700ms linear infinite;
+		-o-animation: loadingStripes 700ms linear infinite;
+		animation: loadingStripes 700ms linear infinite; }
+
+.audio-player-progress-bar {
+	-webkit-transition: width 200ms linear;
+	-moz-transition: width 200ms linear;
+	-o-transition: width 200ms linear;
+	transition: width 200ms linear;
+	display: block;
+	height: 100%;
+	width: 0;
+	max-width: 100%;
+	background-color: #808e97;
+	border-radius: 25px; }
+
+.audio-player-button {
+	display: block;
+	position: relative;
+	float: left;
+	width: 45px;
+	height: 45px;
+	margin: 0 5px;
+	border-radius: 100%;
+	border: 3px solid #808e97;
+	opacity: 0.8;
+	cursor: pointer; }
+	.audio-player-button:hover {
+		text-decoration:none;
+		opacity: 1; }
+	.audio-player-button::before {
+		position: absolute;
+		top: -1px;
+		bottom: 0;
+		left: -12px;
+		right: 0;
+		width: 0px;
+		height: 0px;
+		margin: auto;
+		line-height: 1px;
+		font-size: 20px;
+		color: #808e97; }
+	.audio-player-button.icon-pause::before {
+		font-size: 18px;
+		top: 1px;
+		left: -15px; }
+	.audio-player-button.icon-backward::before {
+		left: -17px; }
+	.audio-player-button.small {
+		width: 35px;
+		height: 35px;
+		margin-top: 5px; }
+		.audio-player-button.small::before {
+			font-size: 15px; }
+
+.audio-player-button-wrappers {
+	overflow: hidden;
+	*zoom: 1;
+	display: block;
+	width: 150px;
+	margin: 15px auto 0 auto; }
+
+::-moz-selection { /* Code for Firefox */
+    color: #fff;
+    background: #808e97;
+}
+
+::selection {
+    color: #fff; 
+    background: #808e97;
+}
+
+
+.hash_spacer {
+	margin-top:60px;
+}
+.fa-fix {
+	height: 45px!important;
+	width: 45px!important;
+}
